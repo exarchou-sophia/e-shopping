@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { getCategories } from "../api/ProductApi"
 import { ProductCard } from "../components/ProductCard";
+import { useProducts } from "../context/useContext";
 
-const HomePage = props => {
+const HomePage = () => {
+    const products = useProducts();
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState();
 
@@ -48,7 +50,7 @@ const HomePage = props => {
 
             <div>
                 {selectedCategory === undefined
-                    ? props.products
+                    ? products
                         .map(product => (
                             <ProductCard
                                 key={product.id}
@@ -58,7 +60,7 @@ const HomePage = props => {
                                 description={product.description}
                             />
                         ))
-                    : props.products
+                    : products
                         .filter(({ category }) => category === selectedCategory)
                         .map(product => <ProductCard key={product.id} {...product} />)
                 }
