@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getCategories } from "../api/ProductApi"
 import { ProductCard } from "../components/ProductCard";
-import { useProducts } from "../context/useContext";
+import { useProducts } from "../context/ProductContext";
 
 const HomePage = () => {
     const products = useProducts();

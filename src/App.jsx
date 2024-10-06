@@ -4,10 +4,22 @@ import HomePage from "./pages/HomePage";
 import BasketPage from "./pages/BasketPage";
 import { useState, useEffect } from "react";
 import { getProducts } from "./api/ProductApi";
-import { ProductContext } from "./context/useContext";
+import { ProductContext } from "./context/ProductContext";
+import { readAllBasketItems } from "./storage/basket";
+import { BasketContext } from "./context/BasketContext";
 
 export const App = () => {
     const [products, setProducts] = useState([])
+    const [basketItems, setBasketItems] = useState([]);
+
+    useEffect(() => {
+        refreshBasketItem()
+    }, []);
+
+    const refreshBasketItem = () => {
+        const storedBasketItems = readAllBasketItems();
+        setBasketItems(storedBasketItems);
+    }
 
     useEffect(() => {
         getProducts().then(setProducts)
@@ -15,19 +27,21 @@ export const App = () => {
 
     return (
         <ProductContext.Provider value={{ products }}>
-            <Router>
-                <nav className="p-4 bg-gray-200">
-                    <Link to="/" className="mr-4">Home</Link>
-                    <Link to="/basket">Your Basket</Link>
-                </nav>
+            <BasketContext.Provider value={{ basketItems, refreshBasketItem }}>
+                <Router>
+                    <nav className="p-4 bg-gray-200">
+                        <Link to="/" className="mr-4">Home</Link>
+                        <Link to="/basket">Your Basket</Link>
+                    </nav>
 
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/basket" element={<BasketPage />} />
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/basket" element={<BasketPage />} />
 
-                    <Route path="*" element={<Navigate to="/" />} />
-                </Routes>
-            </Router>
+                        <Route path="*" element={<Navigate to="/" />} />
+                    </Routes>
+                </Router>
+            </BasketContext.Provider>
         </ProductContext.Provider>
     )
 };

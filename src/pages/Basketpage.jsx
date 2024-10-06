@@ -1,25 +1,10 @@
-import { useEffect, useState } from "react";
-import { readAllBasketItems } from "../storage/basket";
 import { ProductCardWithQuantity } from "../components/ProductCardWithQuantity";
-import { useProducts } from "../context/useContext";
+import { useProducts } from "../context/ProductContext";
+import { useBasket } from "../context/BasketContext";
 
 const BasketPage = () => {
     const products = useProducts();
-
-    // define the state of basket items like categories
-    const [basketItems, setBasketItems] = useState([]);
-    useEffect(() => {
-        refreshBasketItem()
-    }, []);
-
-    const refreshBasketItem = () => {
-        const storedBasketItems = readAllBasketItems();
-        setBasketItems(storedBasketItems);
-    }
-    // load hte basket items [] with use effect like categories
-    // readAllBasketItems
-
-    // categories same like basket items
+    const { basketItems, refreshBasketItem } = useBasket();
 
     if (products.length <= 0) return <p>no products available</p>
 
