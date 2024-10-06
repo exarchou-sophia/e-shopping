@@ -1,10 +1,12 @@
 import { Button } from "./Button";
 import { addBasketItemToStorage, decrementBasketQuantity, removeItemFromStorageById } from "../storage/basket";
 
-export const ProductCard = props => (
+export const ProductCardWithQuantity = props => (
     <div>
-        <h2>{props.title}</h2>
-        <span>{props.price}</span>
+        <h3>{props.title}</h3>
+        <p>
+            {`${props.price}€ x ${props.quantity} = ${props.price * props.quantity}€`}
+        </p>
         <p>{props.description}</p>
 
         <Button
@@ -14,6 +16,15 @@ export const ProductCard = props => (
                 addBasketItemToStorage({
                     id: props.id
                 })
+                props.basketQuantityChanged();
+            }}
+        />
+
+        <Button
+            title="Decrement"
+            onClicked={() => {
+                decrementBasketQuantity(props.id);
+                props.basketQuantityChanged();
             }}
         />
 
@@ -21,16 +32,10 @@ export const ProductCard = props => (
             title="Remove"
             onClicked={() => {
                 console.log("item removed", props)
-                removeItemFromStorageById(props.id)
+                removeItemFromStorageById(props.id);
+                props.basketQuantityChanged();
             }}
         />
 
-        <Button
-            title="decrement"
-            onClicked={() => {
-                console.log("item decremented", props)
-                decrementBasketQuantity(props.id)
-            }}
-        />
     </div>
 );

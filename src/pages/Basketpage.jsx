@@ -1,5 +1,50 @@
+import { useEffect, useState } from "react";
+import { readAllBasketItems } from "../storage/basket";
+import { getProducts } from "../api/ProductApi"
+import { ProductCardWithQuantity } from "../components/ProductCardWithQuantity";
 
-const BasketPage = () => <></>;
+const BasketPage = () => {
+    // define the state of basket items like categories
+    const [basketItems, setBasketItems] = useState([]);
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        getProducts().then(setProducts);
+    }, []);
+
+    useEffect(() => {
+        refreshBasketItem()
+    }, []);
+
+    const refreshBasketItem = () => {
+        const storedBasketItems = readAllBasketItems();
+        setBasketItems(storedBasketItems);
+    }
+    // load hte basket items [] with use effect like categories
+    // readAllBasketItems
+
+    // categories same like basket items
+    return (
+        <div>
+            <h1>Your basket</h1>
+            <div>
+                {basketItems
+                    .map(bItem => ({
+                        ...bItem,
+                        ...(products.find(({ id }) => id === bItem.id))
+                    }))
+                    .map(product => (
+                        <ProductCardWithQuantity
+                            key={product.id}
+                            {...product}
+
+                            basketQuantityChanged={refreshBasketItem}
+                        />
+                    ))}
+            </div>
+        </div>
+    )
+};
 
 // vertical carousel??
 // <div className="carousel carousel-vertical rounded-box h-96">
