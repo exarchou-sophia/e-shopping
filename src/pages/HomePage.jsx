@@ -33,20 +33,21 @@ const HomePage = () => {
 
             <h1>All Categories</h1>
             <div>
-                <select onChange={({ target }) => {
-                    console.log(`this was selected: ${target.value}`, target);
-                    setSelectedCategory(target.value)
-
-                }} className="select select-success w-full max-w-xs">
+                <select
+                    // defaultValue={selectedCategory === undefined ? "Pick a category" : selectedCategory}
+                    defaultValue={selectedCategory ?? "Pick a category"}
+                    onChange={({ target }) => setSelectedCategory(target.value)}
+                    className="select select-success w-full max-w-xs"
+                >
                     <option
                         disabled
-                        selected={selectedCategory === undefined}
+                        key="default-option"
                     >
                         Pick a category
                     </option>
 
                     {categories.map(category => (
-                        <option selected={selectedCategory === category}>
+                        <option key={category}>
                             {category}
                         </option>
                     ))}
@@ -55,21 +56,22 @@ const HomePage = () => {
 
             <h1>Products</h1>
 
-            <ul>
+            <div>
                 {selectedCategory === undefined
                     ? products
                         .map(product => (
                             <ProductCard
+                                key={product.id}
                                 title={product.title}
                                 price={product.price}
                                 description={product.description}
-                            />)
-                        )
+                            />
+                        ))
                     : products
                         .filter(({ category }) => category === selectedCategory)
-                        .map(product => <ProductCard {...product} />)
+                        .map(product => <ProductCard key={product.id} {...product} />)
                 }
-            </ul>
+            </div>
         </div >
     )
 }
