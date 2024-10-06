@@ -1,5 +1,5 @@
 import { Button } from "./Button";
-import { addBasketItemToStorage, removeItemFromStorageById } from "../storage/basket";
+import { addBasketItemToStorage, decrementBasketQuantity, removeItemFromStorageById } from "../storage/basket";
 
 export const ProductCard = props => (
     <div>
@@ -16,5 +16,11 @@ export const ProductCard = props => (
             console.log("item removed", props)
             removeItemFromStorageById(props.id)
         }} />
+
+        <Button title="decrement" onClicked={() => {
+            console.log("item decremented", props)
+            decrementBasketQuantity(props.id)
+        }}
+        />
     </div>
 );

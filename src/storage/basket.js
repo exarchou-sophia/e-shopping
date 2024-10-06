@@ -16,15 +16,43 @@ export const addBasketItemToStorage = item => {
     const alreadyStoredItem = readBasketItemFromStorageById(item.id);
 
     if (alreadyStoredItem) {
-        localStorage.setItem(item.id, JSON.stringify({
+        const alreadyStoredItemWithIncreasedQuantity = {
             ...alreadyStoredItem,
             quantity: alreadyStoredItem.quantity + 1,
-        }));
+        }
+
+        localStorage.setItem(
+            item.id,
+            JSON.stringify(alreadyStoredItemWithIncreasedQuantity)
+        );
     } else {
-        localStorage.setItem(item.id, JSON.stringify({
+        const newItemToStore = {
             ...item,
             quantity: 1,
-        }));
+        }
+
+        localStorage.setItem(
+            item.id,
+            JSON.stringify(newItemToStore)
+        );
+    }
+}
+
+export const decrementBasketQuantity = id => {
+    const alreadyStoredItem = readBasketItemFromStorageById(id);
+    if (!alreadyStoredItem) return
+
+    if (alreadyStoredItem.quantity <= 1) {
+        removeItemFromStorageById(id);
+    } else {
+        const alreadyStoredItemWithDecreasedQuantity = {
+            ...alreadyStoredItem,
+            quantity: alreadyStoredItem.quantity - 1,
+        }
+        localStorage.setItem(
+            id,
+            JSON.stringify(alreadyStoredItemWithDecreasedQuantity)
+        );
     }
 }
 
