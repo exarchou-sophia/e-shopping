@@ -1,21 +1,20 @@
 
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Home from './pages/Home';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+import HomePage from './pages/HomePage';
 import BasketPage from './pages/BasketPage';
 
-function App() {
-    return (
-        <Router>
-            <nav className="p-4 bg-gray-200">
-                <Link to="/" className="mr-4">Home</Link>
-                <Link to="/BasketPage">Your Basket</Link>
-            </nav>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/BasketPage" element={<BasketPage />} />
-            </Routes>
-        </Router>
-    );
-}
+export const App = () => (
+    <Router>
+        <nav className="p-4 bg-gray-200">
+            <Link to="/" className="mr-4">Home</Link>
+            <Link to="/basket">Your Basket</Link>
+        </nav>
 
-export default App
+        <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/basket" element={<BasketPage />} />
+
+            <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+    </Router>
+);
