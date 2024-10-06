@@ -1,17 +1,10 @@
 import { useEffect, useState } from "react";
 import { readAllBasketItems } from "../storage/basket";
-import { getProducts } from "../api/ProductApi"
 import { ProductCardWithQuantity } from "../components/ProductCardWithQuantity";
 
-const BasketPage = () => {
+const BasketPage = props => {
     // define the state of basket items like categories
     const [basketItems, setBasketItems] = useState([]);
-    const [products, setProducts] = useState([]);
-
-    useEffect(() => {
-        getProducts().then(setProducts);
-    }, []);
-
     useEffect(() => {
         refreshBasketItem()
     }, []);
@@ -24,6 +17,9 @@ const BasketPage = () => {
     // readAllBasketItems
 
     // categories same like basket items
+
+    if (props.products.length <= 0) return <p>no products available</p>
+
     return (
         <div>
             <h1>Your basket</h1>
@@ -31,7 +27,7 @@ const BasketPage = () => {
                 {basketItems
                     .map(bItem => ({
                         ...bItem,
-                        ...(products.find(({ id }) => id === bItem.id))
+                        ...(props.products.find(({ id }) => id === bItem.id))
                     }))
                     .map(product => (
                         <ProductCardWithQuantity

@@ -1,20 +1,10 @@
 import { useEffect, useState } from "react";
-import { getProducts, getCategories } from "../api/ProductApi"
+import { getCategories } from "../api/ProductApi"
 import { ProductCard } from "../components/ProductCard";
 
-const HomePage = () => {
-    const [products, setProducts] = useState([]);
+const HomePage = props => {
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState();
-
-    useEffect(() => {
-        getProducts().then(products => {
-            console.log("products", products);
-            setProducts(products)
-        }).catch(error => {
-            console.log("error loading products", error)
-        });
-    }, [])
 
     useEffect(() => {
         getCategories().then(categories => {
@@ -58,7 +48,7 @@ const HomePage = () => {
 
             <div>
                 {selectedCategory === undefined
-                    ? products
+                    ? props.products
                         .map(product => (
                             <ProductCard
                                 key={product.id}
@@ -68,7 +58,7 @@ const HomePage = () => {
                                 description={product.description}
                             />
                         ))
-                    : products
+                    : props.products
                         .filter(({ category }) => category === selectedCategory)
                         .map(product => <ProductCard key={product.id} {...product} />)
                 }
