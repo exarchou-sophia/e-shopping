@@ -2,13 +2,11 @@ import { Button } from "./Button";
 import { addBasketItemToStorage, decrementBasketQuantity, removeItemFromStorageById } from "../storage/basket";
 
 export const ProductCardWithQuantity = props => (
-
     <div className="bg-white shadow-md rounded-lg p-4 m-6 w-full max-w-lg flex space-x-4 items-center">
-
         <img
-            src="./src/assets/default.png"
+            src={props.image}
             alt="Product"
-            className="w-32 h-32 object-cover rounded-md"
+            className="w-32 h-32 object-contain rounded-md"
         />
 
         <div className="bg-white shadow-md rounded-lg p-4 mb-6 w-full max-w-xs flex flex-col items-center space-y-4">
@@ -54,5 +52,4 @@ export const ProductCardWithQuantity = props => (
             </div>
         </div>
     </div>
-
 );
