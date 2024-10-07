@@ -15,16 +15,15 @@ const BasketPage = () => {
 
     return (
         <div>
-            <h1 className="font-bold underline">
-                Hello world!!!!
-            </h1>
-            <h1 className="text-primary bg-red-500">Your basket</h1>
+
+            <h1 className="text-xl border-2 border-lime-500 bg-slate-100 ">Your basket</h1>
             <div>
                 {basketItems
                     .map(bItem => ({
                         ...bItem,
                         ...(products.find(({ id }) => id === bItem.id))
                     }))
+
                     .map(product => (
                         <ProductCardWithQuantity
                             key={product.id}

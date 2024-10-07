@@ -31,9 +31,9 @@ export const App = () => {
                 <Router>
                     <nav className="p-6 bg-cyan-600 top-0 sticky relative inset-0 w-full h-full object-cover" alt="Logo">
                         <img src="./src/assets/default-monochrome.png" />
-                        <div className="z-10 flex justify-between w-full px-4 md:px-8 relative">
-                            <Link to="/" className="mr-4 ">Home</Link>
-                            <Link to="/basket">Your Basket</Link>
+                        <div className="z-10 flex justify-between w-full  px-4 md:px-8 relative">
+                            <Link to="/" className="mr-4 hover:text-lime-300 transition-colors duration-300">Home</Link>
+                            <Link to="/basket" className="hover:text-lime-300 transition-colors duration-300">Your Basket</Link>
                         </div>
                     </nav>
 

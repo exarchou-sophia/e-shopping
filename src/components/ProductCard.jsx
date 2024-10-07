@@ -13,6 +13,7 @@ export const ProductCard = props => (
                 <p>{props.description}</p>
                 <div className="card-actions justify-end">
                     <Button
+                        className="px-4"
                         title=" + "
                         onClicked={() => {
                             console.log("item added", props)
@@ -23,6 +24,7 @@ export const ProductCard = props => (
                     />
 
                     <Button
+                        className="px-4"
                         title=" - "
                         onClicked={() => {
                             console.log("item decremented", props)
