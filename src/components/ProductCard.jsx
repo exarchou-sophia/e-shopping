@@ -9,7 +9,7 @@ export const ProductCard = props => (
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{props.title}</h2>
-                <span className="text-lg font-semibold text-cyan-600">{props.price}</span>
+                <span className="text-lg font-semibold p-2 text-cyan-600">{`${props.price}€`}</span>
                 <p>{props.description}</p>
                 <div className="card-actions justify-end">
                     <Button
@@ -32,13 +32,13 @@ export const ProductCard = props => (
                         }}
                     />
 
-                    <Button
-                        title="Remove"
+                    {/* <Button
+                        title=" ❌ "
                         onClicked={() => {
                             console.log("item removed", props)
                             removeItemFromStorageById(props.id)
                         }}
-                    />
+                    /> */}
                 </div>
             </div>
         </div>

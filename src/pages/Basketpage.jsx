@@ -16,7 +16,7 @@ const BasketPage = () => {
     return (
         <div>
 
-            <h1 className="text-xl border-2 border-lime-500 bg-slate-100 ">Your basket</h1>
+            <h1 className="text-xl border-2 p-4 border-b-lime-500 bg-slate-100 ">Your basket</h1>
             <div>
                 {basketItems
                     .map(bItem => ({
