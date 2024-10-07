@@ -1,10 +1,15 @@
 import { ProductCardWithQuantity } from "../components/ProductCardWithQuantity";
 import { useProducts } from "../context/ProductContext";
 import { useBasket } from "../context/BasketContext";
+import { useEffect } from "react";
 
 const BasketPage = () => {
     const products = useProducts();
     const { basketItems, refreshBasketItem } = useBasket();
+
+    useEffect(() => {
+        refreshBasketItem();
+    }, [])
 
     if (products.length <= 0) return <p>no products available</p>
 
