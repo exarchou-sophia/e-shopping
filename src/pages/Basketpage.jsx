@@ -33,11 +33,20 @@ const BasketPage = () => {
                     ))}
             </div>
 
-            <aside className="flex justify-end items-center border-4 border-cyan-500
-                            h-36 w-36 fixed top-[66%] right-0 transform -translate-y-1/2">
-                <img src="./src/assets/images/shopping-basket.png" className="h-25 m-8" />
+            <aside
+                className="flex justify-end items-center border-4 rounded-md bg-cyan-500 border-cyan-500
+                            h-36 w-36 fixed top-[66%] right-1 transform -translate-y-1/2"
+                style={{
+
+                    borderRadius: 16,
+                    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+                    backdropFilter: "blur(5px)",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                }}
+            >
+                <img src="./src/assets/images/shopping-basket.png" className="h-25 m-4" />
                 {/* <p> Total: {BasketNavView}€ </p> */}
-                <p className="items-center justify-center flex">
+                <p className="items-center justify-center  flex px-3">
                     Total:
                     {basketItems
                         .map(bItem => ({
@@ -51,7 +60,6 @@ const BasketPage = () => {
                 </p>
             </aside>
         </div >
-
     )
 };
 
