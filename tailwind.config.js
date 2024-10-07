@@ -10,9 +10,9 @@ export default {
             {
                 mytheme: {
                     primary: colors.cyan["600"],
-                    secondary: colors.slate["500"]
-                    accent: colors.amber["600"]
-                    neutral: colors.stone["300"]
+                    secondary: colors.slate["500"],
+                    accent: colors.amber["600"],
+                    neutral: colors.stone["300"],
                 },
             },
         ],
