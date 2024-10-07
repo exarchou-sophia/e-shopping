@@ -29,9 +29,12 @@ export const App = () => {
         <ProductContext.Provider value={{ products }}>
             <BasketContext.Provider value={{ basketItems, refreshBasketItem }}>
                 <Router>
-                    <nav className="p-6 bg-cyan-600 top-0 sticky flex justify-between items-center">
-                        <Link to="/" className="mr-4 ">Home</Link>
-                        <Link to="/basket">Your Basket</Link>
+                    <nav className="p-6 bg-cyan-600 top-0 sticky relative inset-0 w-full h-full object-cover" alt="Logo">
+                        <img src="./src/assets/default-monochrome.png" />
+                        <div className="z-10 flex justify-between w-full px-4 md:px-8 relative">
+                            <Link to="/" className="mr-4 ">Home</Link>
+                            <Link to="/basket">Your Basket</Link>
+                        </div>
                     </nav>
 
                     <Routes>

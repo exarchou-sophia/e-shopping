@@ -21,7 +21,7 @@ const HomePage = () => {
 
     return (
         <div className="text-center text--slate-800 p-8 min-h-screen p-6 bg-slate-100">
-            <h1 className="text-4xl text-center mb-10 font-bold" >Your Amazing e-shopping experience awaits!</h1>
+            <h1 className="text-4xl text-center p-5 mb-10 font-bold" >Your Amazing e-shopping experience awaits!</h1>
 
             <h1>All Categories</h1>
             <div>
