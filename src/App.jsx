@@ -27,6 +27,8 @@ export const App = () => {
 
     const refreshBasketItem = () => {
         const storedBasketItems = readAllBasketItems();
+        console.log("refresh");
+
         setBasketItems(storedBasketItems);
     }
 

@@ -2,7 +2,7 @@ import { Button } from "./Button";
 import { addBasketItemToStorage, decrementBasketQuantity, removeItemFromStorageById } from "../storage/basket";
 
 export const ProductCardWithQuantity = props => (
-    <div className="relative bg-white shadow-md rounded-lg pt-1 pb-1 m-2 w-full max-w-lg flex items-center  space-x-4 ">
+    <div className="relative bg-white shadow-md rounded-lg pt-1 pb-1 m-2 w-full max-w-lg flex items-center space-x-4 ">
         <Button
             style={{ background: "none", position: "absolute", right: -12, top: -12 }}
             title="❌"
@@ -58,10 +58,6 @@ export const ProductCardWithQuantity = props => (
                         total: {props.price * props.quantity}€
                     </p>
                 </div>
-                {/* <p className="text-sm">
-                    {`${props.price}€ x ${props.quantity} = ${props.price * props.quantity}€`}
-                </p> */}
-                {/* <p className="text-gray-500"> qty: {props.quantity}</p> */}
             </div>
         </div>
     </div>
