@@ -2,6 +2,7 @@ import { ProductCardWithQuantity } from "../components/ProductCardWithQuantity";
 import { useProducts } from "../context/ProductContext";
 import { useBasket } from "../context/BasketContext";
 import { useEffect } from "react";
+import { BasketNavView } from "../components/BasketNavView";
 
 const BasketPage = () => {
     const products = useProducts();
@@ -32,7 +33,12 @@ const BasketPage = () => {
                         />
                     ))}
             </div>
-        </div>
+
+            <aside className="flex justify-end border border-cyan-400">
+                <img src="./src/assets/images/shopping-basket.png" className="h-20" />
+            </aside>
+        </div >
+
     )
 };
 

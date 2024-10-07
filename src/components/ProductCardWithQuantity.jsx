@@ -2,30 +2,31 @@ import { Button } from "./Button";
 import { addBasketItemToStorage, decrementBasketQuantity, removeItemFromStorageById } from "../storage/basket";
 
 export const ProductCardWithQuantity = props => (
-    <div className="bg-white shadow-md rounded-lg p-6 m-12 w-full max-w-lg flex items-center  space-x-4 ">
+    <div className="relative bg-white shadow-md rounded-lg pt-1 pb-1 m-2 w-full max-w-lg flex items-center  space-x-4 ">
+        <Button
+            style={{ background: "none", position: "absolute", right: -12, top: -12 }}
+            title="❌"
+            onClicked={() => {
+                console.log("item removed", props)
+                removeItemFromStorageById(props.id);
+                props.basketQuantityChanged();
+            }}
+        />
         <div className="flex flex-col items-center space-y-2">
             <img
                 src={props.image}
                 alt="Product"
                 className="w-32 h-32 object-contain rounded-md"
             />
-            <Button
-                className="px-3 "
-                title=" ❌ "
-                onClicked={() => {
-                    console.log("item removed", props)
-                    removeItemFromStorageById(props.id);
-                    props.basketQuantityChanged();
-                }}
-            />
+
         </div>
-        <div className="bg-white shadow-md rounded-lg p-4 mb-6 w-full max-w-xs flex flex-col items-center space-y-4">
+        <div className="bg-white shadow-md rounded-lg p-2 mb-6 w-full max-w-xs flex flex-col space-y-2">
             <h3 className="text-lg font-semibold ">{props.title}</h3>
 
             <p className="text-xs text-gray-600">{props.description}</p>
-            <div className="flex items-center justify-center space-x-4">
+            <div className="flex items-center space-x-2">
                 <Button
-                    className="px-4"
+                    className="m-0 px-4"
                     title=" + "
                     onClicked={() => {
                         console.log("item added", props)
@@ -41,7 +42,7 @@ export const ProductCardWithQuantity = props => (
                 </div>
 
                 <Button
-                    className="px-4"
+                    className="px-4 m-0"
                     title=" - "
                     onClicked={() => {
                         decrementBasketQuantity(props.id);
@@ -49,10 +50,13 @@ export const ProductCardWithQuantity = props => (
                     }}
                 />
 
-                <div className="text-sm ">
-                    <p className="font-md">{props.price}€</p>
-
-                    <p className="ml-2 text-lime-600 font-md whitespace-nowrap">total:{props.price * props.quantity}€</p>
+                <div className="text-sm text-left">
+                    <p className="font-md">
+                        {props.price}€
+                    </p>
+                    <p className="text-lime-600 font-md whitespace-nowrap">
+                        total: {props.price * props.quantity}€
+                    </p>
                 </div>
                 {/* <p className="text-sm">
                     {`${props.price}€ x ${props.quantity} = ${props.price * props.quantity}€`}
