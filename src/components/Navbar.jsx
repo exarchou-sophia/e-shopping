@@ -17,7 +17,7 @@ export const NavBar = () => {
             </Link>
 
             <select
-                className="select my-1 rounded-md w-full max-w-xs"
+                className="select my-2 rounded-md w-full max-w-xs"
                 defaultValue={selectedCategory ?? "Pick a category"}
                 onChange={({ target }) => setSelectedCategory(target.value)}
             >
