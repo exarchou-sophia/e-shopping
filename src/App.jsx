@@ -30,7 +30,7 @@ export const App = () => {
             <BasketContext.Provider value={{ basketItems, refreshBasketItem }}>
                 <Router>
                     <nav className="p-4 bg-gray-200">
-                        <Link to="/" className="mr-4">Home</Link>
+                        <Link to="/" className="mr-4 ">Home</Link>
                         <Link to="/basket">Your Basket</Link>
                     </nav>
 

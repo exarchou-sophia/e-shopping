@@ -20,8 +20,8 @@ const HomePage = () => {
     }, [selectedCategory])
 
     return (
-        <div className="text-center p-8">
-            <h1 className="text-4xl font-bold">Your ultimate e-shopping experience awaits!</h1>
+        <div className="text-center text-primary p-8 bg-red-200">
+            <h1 className="text-4xl font-bold ">Your Amazing e-shopping experience awaits!</h1>
 
             <h1>All Categories</h1>
             <div>
