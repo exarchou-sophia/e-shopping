@@ -11,7 +11,7 @@ const HomePage = () => {
             <h1 className="text-4xl text-center p-5 mb-10 font-bold" >Your Amazing e-shopping experience awaits!</h1>
             <h1 className="text-3xl font-bold text-center p-2 mb-10">All Products</h1>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {selectedCategory === undefined
                     ? products
                         .map(product => (
