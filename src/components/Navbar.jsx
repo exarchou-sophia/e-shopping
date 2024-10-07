@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCategories } from '../context/CategoryContext';
+import { BasketNavView } from "./BasketNavView";
 
 export const NavBar = () => {
     const {
@@ -12,7 +13,7 @@ export const NavBar = () => {
     return (
         <nav className="z-10 flex justify-between w-full  px-4 md:px-8 relative py-1 bg-cyan-600 top-0 sticky relative inset-0 w-full h-full object-cover" alt="Logo">
             <Link to="/" className="mr-4 hover:text-lime-300 text-lg text-white transition-colors duration-300">
-                <img src="/logo.png" className='h-12' />
+                <img src="/logo.png" className='h-14' />
             </Link>
 
             <select
@@ -35,7 +36,7 @@ export const NavBar = () => {
             </select>
 
             <Link to="/basket" className="hover:text-lime-300 text-lg text-white transition-colors duration-300">
-                <img src="./src/assets/images/shopping-basket.png" className="h-10" />
+                <BasketNavView />
             </Link>
         </nav>
     )
