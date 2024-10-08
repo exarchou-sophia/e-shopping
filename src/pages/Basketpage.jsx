@@ -38,7 +38,7 @@ const BasketPage = () => {
                             h-36 w-36 fixed top-[66%] right-1 transform -translate-y-1/2"
 
             >
-                <img src="./src/assets/images/shopping-basket.png" className="h-25 m-0" />
+                <img src="./public/assets/images/shopping-basket.png" className="h-25 m-0" />
                 {/* <p> Total: {BasketNavView}€ </p> */}
                 <div className="flex justify-between items-start w-full">
                     <p className="m-0 p-0 " style={{ width: "70px" }}>

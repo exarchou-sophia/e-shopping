@@ -5,7 +5,7 @@ export const BasketNavView = () => {
 
     return (
         <div>
-            <img src="./src/assets/images/shopping-basket.png" className="h-10" />
+            <img src="./assets/images/shopping-basket.png" className="h-10" />
             <p className="items-end justify-center flex">
                 {basketItems
                     .map(({ quantity }) => quantity)
