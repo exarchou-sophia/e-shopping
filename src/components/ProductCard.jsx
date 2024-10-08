@@ -16,7 +16,7 @@ export const ProductCard = props => {
                 <span className="text-lg font-semibold p-2 text-cyan-600">
                     {`${props.price}€`}
                 </span>
-                <p>{props.description}</p>
+                <p className="text-left px-1">{props.description}</p>
 
                 <div className="card-actions justify-end">
                     <Button

@@ -44,21 +44,24 @@ const BasketPage = () => {
                     border: "1px solid rgba(255, 255, 255, 0.3)",
                 }}
             >
-                <img src="./src/assets/images/shopping-basket.png" className="h-25 m-4" />
+                <img src="./src/assets/images/shopping-basket.png" className="h-25 m-0" />
                 {/* <p> Total: {BasketNavView}€ </p> */}
-                <p className="items-center justify-center  flex px-3">
-                    Total:
-                    {basketItems
-                        .map(bItem => ({
-                            ...bItem,
-                            ...(products.find(({ id }) => id === bItem.id))
-                        }))
-                        .map(({ price, quantity }) => price * quantity)
-                        .reduce((accumulator, currentValue) => (accumulator + currentValue), 0)
-                        .toFixed(2)
-                    }
-                </p>
-            </aside>
+                <div className="flex justify-between items-start w-full">
+                    <p className="m-0 p-0 " style={{ width: "70px" }}>
+                        Total: </p>
+                    <p className="m-0 px-1 no-wrap">
+                        {basketItems
+                            .map(bItem => ({
+                                ...bItem,
+                                ...(products.find(({ id }) => id === bItem.id))
+                            }))
+                            .map(({ price, quantity }) => price * quantity)
+                            .reduce((accumulator, currentValue) => (accumulator + currentValue), 0)
+                            .toFixed(2)
+                        }€
+                    </p>
+                </div >
+            </aside >
         </div >
     )
 };
