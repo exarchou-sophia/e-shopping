@@ -34,15 +34,9 @@ const BasketPage = () => {
             </div>
 
             <aside
-                className="flex justify-end items-center border-4 rounded-md bg-cyan-500 border-cyan-500
+                className="flex justify-end items-center border-4 bg-cyan-500 rounded-md border-cyan-500
                             h-36 w-36 fixed top-[66%] right-1 transform -translate-y-1/2"
-                style={{
 
-                    borderRadius: 16,
-                    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-                    backdropFilter: "blur(5px)",
-                    border: "1px solid rgba(255, 255, 255, 0.3)",
-                }}
             >
                 <img src="./src/assets/images/shopping-basket.png" className="h-25 m-0" />
                 {/* <p> Total: {BasketNavView}€ </p> */}
