@@ -19,6 +19,17 @@ export const ProductCard = props => {
                 <p className="text-left px-1">{props.description}</p>
 
                 <div className="card-actions justify-end">
+
+                    <Button
+                        className="px-4"
+                        title=" - "
+                        onClicked={() => {
+                            console.log("item decremented", props)
+                            decrementBasketQuantity(props.id)
+                            refreshBasketItem()
+                        }}
+                    />
+
                     <Button
                         className="px-4"
                         title=" + "
@@ -27,16 +38,6 @@ export const ProductCard = props => {
                             addBasketItemToStorage({
                                 id: props.id
                             })
-                            refreshBasketItem()
-                        }}
-                    />
-
-                    <Button
-                        className="px-4"
-                        title=" - "
-                        onClicked={() => {
-                            console.log("item decremented", props)
-                            decrementBasketQuantity(props.id)
                             refreshBasketItem()
                         }}
                     />

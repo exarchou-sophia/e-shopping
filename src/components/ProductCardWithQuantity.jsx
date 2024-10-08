@@ -25,14 +25,12 @@ export const ProductCardWithQuantity = props => (
 
             <p className="text-xs text-gray-600">{props.description}</p>
             <div className="flex items-center space-x-2">
+
                 <Button
-                    className="m-0 px-4"
-                    title=" + "
+                    className="px-4 m-0"
+                    title=" - "
                     onClicked={() => {
-                        console.log("item added", props)
-                        addBasketItemToStorage({
-                            id: props.id
-                        })
+                        decrementBasketQuantity(props.id);
                         props.basketQuantityChanged();
                     }}
                 />
@@ -42,10 +40,13 @@ export const ProductCardWithQuantity = props => (
                 </div>
 
                 <Button
-                    className="px-4 m-0"
-                    title=" - "
+                    className="m-0 px-4"
+                    title=" + "
                     onClicked={() => {
-                        decrementBasketQuantity(props.id);
+                        console.log("item added", props)
+                        addBasketItemToStorage({
+                            id: props.id
+                        })
                         props.basketQuantityChanged();
                     }}
                 />
